@@ -1,0 +1,241 @@
+1. Significance of MAC layer and its position in OSI model
+The MAC (Medium Access Control) layer is a sublayer of the Data Link Layer (Layer 2) in the OSI model.
+Position in OSI Model
+
+Layer 2 (Data Link Layer) is divided into:
+LLC (Logical Link Control)
+MAC (Medium Access Control)
+
+Significance of MAC Layer
+
+Medium Access Control
+It controls how multiple devices share the wireless medium using mechanisms like CSMA/CA.
+
+Framing
+It defines the structure of Wi-Fi frames (management, control, and data frames).
+
+Addressing
+Uses MAC addresses to identify sender and receiver devices.
+
+Reliability
+Ensures successful delivery using acknowledgments (ACK) and retransmissions.
+
+Security Handling
+Works with encryption mechanisms to protect data.
+--------------------------------------------------
+2. Frame format of the 802.11 MAC header and purpose of each field
+
+An 802.11 MAC frame consists of a MAC header, payload, and FCS (Frame Check Sequence).
+
+MAC Header Fields and Purpose
+Frame Control (2 bytes)
+Identifies frame type (management, control, data)
+Contains flags like To DS, From DS, Retry, Power Management
+Duration/ID (2 bytes)
+Indicates how long the channel will be reserved
+Used for NAV (Network Allocation Vector)
+Address Fields (6 bytes each)
+Up to 4 address fields:
+Source Address (SA)
+Destination Address (DA)
+Transmitter Address (TA)
+Receiver Address (RA)
+Used for identifying devices in different scenarios
+Sequence Control (2 bytes)
+Contains sequence number and fragment number
+Helps in ordering and reassembling frames
+QoS Control (optional)
+Used in QoS-enabled networks
+Defines priority of traffic
+HT Control (optional)
+Used in high-throughput (802.11n and above) features
+----------------------------------------------
+3. MAC layer functionalities in Management, Control, and Data planes
+
+The MAC layer handles different types of operations using three categories of frames: Management, Control, and Data.
+
+1. Management Plane
+
+Responsible for network setup and maintenance
+
+Functions:
+
+Beacon transmission (network advertisement)
+Scanning (finding networks)
+Authentication (verifying identity)
+Association / Reassociation (joining network)
+Deauthentication / Disassociation (leaving network)
+Roaming support
+2. Control Plane
+
+Responsible for efficient and reliable use of the wireless medium
+
+Functions:
+
+RTS/CTS (collision avoidance)
+ACK / Block ACK (acknowledgment)
+NAV management (channel reservation)
+PS-Poll (power saving communication)
+Frame control for access coordination
+3. Data Plane
+
+Responsible for actual data transmission
+
+Functions:
+
+Data frame transmission between devices
+Fragmentation and reassembly
+Encryption and decryption
+QoS handling (traffic prioritization)
+Forwarding of frames
+----------------------------------------------------------
+4. Scanning process and its types
+
+Scanning is the process by which a wireless client discovers available Wi-Fi networks before connecting.
+
+Types of Scanning
+1. Passive Scanning
+The client listens for beacon frames sent by Access Points
+Each AP periodically broadcasts its SSID and capabilities
+The client collects this information and displays available networks
+
+2. Active Scanning
+The client actively sends probe request frames
+APs respond with probe response frames
+Client quickly discovers nearby networks
+----------------------------------------------------
+5. Client association process
+
+The client association process is the sequence of steps a wireless device follows to connect to a Wi-Fi network.
+
+Steps in Association
+Scanning
+The client discovers available networks using passive or active scanning.
+Authentication
+The client sends an authentication request to the AP.
+The AP responds, allowing the client to proceed (open or secure authentication).
+Association Request
+The client sends an association request to the AP, including its capabilities (supported rates, features).
+Association Response
+The AP accepts the request and assigns an AID (Association ID) to the client.
+Key Exchange (if secured network)
+Security process like the 4-way handshake is performed to establish encryption keys.
+Data Communication Begins
+Once association and security setup are complete, the client can send and receive data.
+----------------------------------------------------
+6. Steps in EAPOL 4-way handshake and purpose of keys
+
+The EAPOL 4-way handshake is used in Wi-Fi security (WPA2/WPA3) to establish encryption keys between the client and the Access Point.
+
+Steps in 4-Way Handshake
+Message 1 (AP → Client)
+AP sends ANonce (random number)
+Client prepares to generate keys
+Message 2 (Client → AP)
+Client generates SNonce (its own random number)
+Creates PTK (Pairwise Temporal Key) using:
+PMK (derived from password)
+ANonce, SNonce, MAC addresses
+Sends SNonce and MIC to AP
+Message 3 (AP → Client)
+AP generates PTK (same method)
+Verifies MIC
+Sends GTK (Group Temporal Key) encrypted
+Instructs client to install keys
+Message 4 (Client → AP)
+Client confirms key installation
+Secure communication begins
+----------------------------------------------------------
+7. Power saving scheme in MAC layer and types of power saving mechanisms
+
+The MAC layer includes power-saving mechanisms to reduce battery consumption in wireless devices.
+
+Basic Power Saving Scheme
+A client informs the AP that it is entering sleep mode by setting the Power Management bit
+The AP buffers incoming data for that client
+The client periodically wakes up and checks for pending data using beacon frames (TIM/DTIM)
+If data is available, the client retrieves it using PS-Poll or trigger mechanisms
+Types of Power Saving Mechanisms
+Legacy Power Save Mode (PSM)
+Client sleeps and wakes periodically
+Uses TIM and PS-Poll to receive buffered data
+U-APSD (Unscheduled Automatic Power Save Delivery)
+Client triggers data delivery using uplink frames
+Reduces delay compared to legacy PSM
+TWT (Target Wake Time) – Wi-Fi 6
+AP schedules specific wake-up times for clients
+Improves battery efficiency and reduces contention
+----------------------------------------------------
+8. Medium Access Control methodologies
+
+Medium Access Control (MAC) defines how multiple devices share the wireless channel.
+
+1. DCF (Distributed Coordination Function)
+Default method in Wi-Fi
+Uses CSMA/CA (Carrier Sense Multiple Access with Collision Avoidance)
+Devices:
+Listen to channel
+Wait if busy
+Use random backoff before transmitting
+
+Characteristic:
+Distributed, contention-based access
+
+2. PCF (Point Coordination Function)
+Centralized method controlled by AP
+AP polls devices and allows them to transmit one by one
+Works in Contention-Free Period (CFP)
+
+Characteristic:
+No collisions, but inefficient and rarely used
+
+3. EDCA (Enhanced Distributed Channel Access)
+Extension of DCF for QoS
+Provides priority-based access
+Different traffic (voice, video, data) gets different wait times
+
+Characteristic:
+Improves performance for real-time applications
+-------------------------------------------------
+9. Block ACK mechanism and its advantages
+
+Block ACK is a mechanism in Wi-Fi that allows a receiver to acknowledge multiple frames at once instead of sending an acknowledgment for each frame.
+
+How it works
+Sender transmits multiple frames in a sequence (burst)
+Receiver stores them and sends a Block ACK frame
+The Block ACK contains a bitmap indicating which frames were received successfully
+Sender retransmits only the missing frames
+------------------------------------------------
+10. A-MSDU, A-MPDU and A-MSDU in A-MPDU
+
+Frame aggregation is used to improve efficiency by combining multiple packets into one transmission.
+
+1. A-MSDU (Aggregated MAC Service Data Unit)
+Multiple MSDUs (upper-layer packets) are combined into a single MPDU
+Uses a single MAC header
+
+Advantage:
+
+Low overhead, more efficient
+
+Limitation:
+
+If error occurs, entire frame must be retransmitted
+2. A-MPDU (Aggregated MAC Protocol Data Unit)
+Multiple MPDUs are combined into one transmission
+Each MPDU has its own header and can be acknowledged individually
+
+Advantage:
+
+Better reliability
+Supports selective retransmission (with Block ACK)
+3. A-MSDU in A-MPDU (Hybrid Aggregation)
+Combines both techniques
+Each MPDU inside an A-MPDU contains multiple MSDUs
+
+Advantage:
+
+High efficiency (from A-MSDU)
+High reliability (from A-MPDU)
+---------------------------------------------------

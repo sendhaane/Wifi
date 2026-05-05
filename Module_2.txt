@@ -1,0 +1,141 @@
+1. Split MAC Architecture and how it improves AP performance
+
+Split MAC divides MAC layer functions between AP and controller.
+
+AP handles lower MAC functions like frame transmission, ACK, encryption
+Controller handles upper MAC functions like authentication, roaming, policy
+
+This improves performance because:
+
+AP handles real-time tasks locally (faster response)
+Controller centralizes complex processing
+Reduces AP load and simplifies management
+-------------------------------------------------------------------------------
+2. CAPWAP and flow between AP and Controller 
+
+CAPWAP (Control and Provisioning of Wireless Access Points) is a protocol used for communication between Lightweight APs and the Wireless LAN Controller (WLC).
+
+Flow:
+
+AP boots and gets IP address
+AP discovers the WLC
+AP joins the controller (authentication)
+CAPWAP tunnels are established
+Control messages (configuration, management) flow between AP and WLC
+Data traffic (client data) is either tunneled to WLC or locally switched depending on mode
+
+This allows centralized management and control of all APs from the controller.
+--------------------------------------------------------------------------------
+3. CAPWAP in OSI model, tunnels and purpose 
+
+CAPWAP operates at the Network layer (Layer 3) of the OSI model because it uses IP (UDP) for communication between AP and controller.
+
+CAPWAP uses two tunnels:
+
+Control Tunnel
+Used for management and control communication
+Carries configuration, authentication, and AP management messages
+Fully encrypted (DTLS)
+Data Tunnel
+Carries actual client data traffic
+Used to forward user traffic between AP and controller
+May or may not be encrypted depending on configuration
+--------------------------------------------------------------------------------
+4. Difference between Lightweight APs and Cloud-based APs
+
+Lightweight APs depend on a local Wireless LAN Controller (WLC) for configuration and management.
+
+Control is centralized within the local network
+Requires on-premise controller
+Suitable for enterprise environments
+
+Cloud-based APs are managed through a cloud controller over the internet.
+
+No physical controller required on-site
+Configuration and monitoring done via cloud dashboard
+Easier deployment and remote management
+
+Key difference:
+
+Lightweight AP → managed by local WLC
+Cloud-based AP → managed by cloud platform
+--------------------------------------------------------------------------
+5. How the CAPWAP tunnel is maintained between AP and Controller
+
+After the AP joins the controller, the CAPWAP tunnel is kept active using periodic keepalive messages.
+
+The AP and controller exchange heartbeat (echo) messages at regular intervals
+If both sides receive responses, the tunnel is considered active
+The control tunnel (secured using DTLS) maintains session integrity
+The controller can also push configuration updates through this tunnel
+
+If the AP does not receive responses from the controller for a certain time, it assumes the connection is lost and tries to re-discover and reconnect to the controller.
+-----------------------------------------------------------------------------------
+6. Difference between Sniffer Mode and Monitor Mode, with use cases
+
+Sniffer Mode
+In this mode, the AP captures wireless packets from the air and sends them to a controller or analysis tool. It does not serve clients.
+
+Used for packet-level analysis and troubleshooting
+Helps in debugging issues like retransmissions, interference, or protocol errors
+
+Use case:
+Analyzing Wi-Fi traffic using tools like packet analyzers to troubleshoot network problems.
+
+Monitor Mode
+In this mode, the AP continuously scans the wireless environment but does not capture full packet data like sniffer mode. It also does not serve clients.
+
+Used for detecting rogue APs, interference, and security threats
+Collects network statistics and health information
+
+Use case:
+Security monitoring and detecting unauthorized devices or interference sources.
+---------------------------------------------------------------------------------
+7. If WLC is deployed in WAN, which AP mode is best for local network and how?
+
+The best mode is FlexConnect mode (Local Switching).
+
+Reason:
+
+In WAN deployment, sending all client data to a remote controller increases latency and bandwidth usage
+FlexConnect allows data to be handled locally
+
+How it works:
+
+Control traffic (management, configuration) still goes to the WLC over WAN
+Data traffic (user traffic) is switched locally at the AP
+If WAN/WLC connection fails, the AP can still continue basic operations
+----------------------------------------------------------------------------------------
+8. Challenges of deploying autonomous APs (more than 50) in a large network like a university
+
+Deploying many autonomous APs becomes difficult because each AP works independently.
+
+Management complexity
+Each AP must be configured separately, which is time-consuming and hard to maintain consistency.
+No centralized control
+There is no single point to manage security, policies, or updates.
+Scalability issues
+As the number of APs increases, managing them becomes inefficient.
+Roaming problems
+Seamless roaming is difficult since APs do not share client information.
+RF optimization challenges
+Channel and power settings must be manually configured, leading to interference issues.
+Firmware and security updates
+Updates need to be done individually on each AP.
+--------------------------------------------------------------------------------------
+9. What happens if WLC goes down when a client is connected to a Lightweight AP in Local Mode
+
+In Local Mode, both control and data traffic go through the controller.
+
+When the WLC goes down, the AP loses its connection to the controller
+The CAPWAP tunnel is broken
+The AP cannot forward client traffic because data path depends on the controller
+
+Impact on client:
+
+Existing client sessions are dropped
+Clients lose network connectivity
+New clients cannot connect
+
+The AP will try to rejoin the controller or connect to a backup controller if configured.
+----------------------------------------------------------------------------------------------

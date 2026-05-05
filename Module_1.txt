@@ -1,0 +1,153 @@
+1. In which OSI layer does Wi-Fi standard/protocol fit?
+
+Wi-Fi (IEEE 802.11) operates in the lower two layers of the OSI model:
+
+1. Physical Layer (Layer 1)
+Handles transmission of bits over air
+Includes:
+Modulation (OFDM, QAM)
+Frequency bands (2.4 GHz, 5 GHz, 6 GHz)
+Signal encoding/decoding
+2. Data Link Layer (Layer 2)
+Specifically the MAC (Medium Access Control) sublayer
+Handles:
+Frame formatting (802.11 frames)
+Addressing (MAC addresses)
+Channel access (CSMA/CA)
+Retransmissions (ACK, Block ACK)
+Security (encryption, authentication)
+-----------------------------------------------------------------------------
+
+2. Wi-Fi devices in day-to-day life and their wireless properties (with Wi-Fi generation mapping)
+
+Laptop:
+Typical properties:
+Standard: 802.11ax
+Band: 5 GHz / 2.4 GHz
+
+Smartphone 
+Typical properties:
+Standard: 802.11ax or 802.11ac
+Band: 2.4 GHz / 5 GHz
+
+Smart TV
+Typical properties:
+Standard: 802.11n / 802.11ac
+Band: Mostly 2.4 GHz (some support 5 GHz)
+
+Router (Home Wi-Fi Router)
+Typical properties:
+Standard: 802.11ac / 802.11ax
+Bands: Dual band (2.4 + 5 GHz)
+---------------------------------------------------------------------------------
+3. What is BSS and ESS?
+
+BSS (Basic Service Set)
+
+A BSS is the smallest unit of a Wi-Fi network, consisting of:
+
+One Access Point (AP)
+Multiple connected clients (devices)
+
+ESS (Extended Service Set)
+
+An ESS is a collection of multiple BSSs connected together to form a larger network.
+------------------------------------------------------------------------------------
+4. Basic functionalities of a Wi-Fi Access Point (AP) 
+
+A Wi-Fi Access Point (AP) is a device that connects wireless clients to a wired network and manages wireless communication.
+
+Connectivity
+The AP acts as a bridge between wireless devices and the wired LAN or internet.
+Network Access & Association
+It allows devices to discover the network (via beacons), authenticate, and connect (associate).
+Security
+It provides authentication and encryption using protocols like WPA2/WPA3 to protect data.
+Traffic Handling
+The AP forwards data between clients and the network and controls channel access using MAC protocols.
+Radio Management
+It manages wireless parameters such as channel and transmit power to reduce interference and improve performance.
+----------------------------------------------------------------------------------------
+5. Difference between Bridge Mode and Repeater Mode
+
+Bridge Mode and Repeater Mode are used to extend or connect networks, but they work differently.
+
+Function
+Bridge Mode connects two networks (usually wired to wireless or two LANs).
+Repeater Mode extends the Wi-Fi signal range.
+Connection Type
+Bridge uses a point-to-point link between networks.
+Repeater connects to an existing Wi-Fi and rebroadcasts it.
+Performance
+Bridge mode maintains better performance since it often uses a dedicated link.
+Repeater mode reduces speed because it retransmits the same signal.
+Usage
+Bridge: connecting two buildings or networks.
+Repeater: improving coverage in weak signal areas.
+Control
+Bridge acts like a transparent connector.
+Repeater acts like a signal extender.
+-------------------------------------------------------------------------------------------
+6. Difference between 802.11a and 802.11b 
+Frequency Band
+802.11a operates in 5 GHz band
+802.11b operates in 2.4 GHz band
+Speed
+802.11a supports up to 54 Mbps
+802.11b supports up to 11 Mbps
+Range
+802.11a has shorter range (higher frequency)
+802.11b has longer range
+Interference
+802.11a has less interference
+802.11b has more interference (crowded 2.4 GHz)
+Cost & Adoption
+802.11a was more expensive and less widely used
+802.11b was cheaper and widely adopted
+-------------------------------------------------------------------------------------------
+7. 2.4 GHz vs 5 GHz Wi-Fi (Observed Differences) — 5 mark answer
+
+When the hotspot/router is set to 2.4 GHz, the connection generally has a longer range and works better through walls and obstacles. However, the speed is lower and there is more interference because many devices (Bluetooth, microwaves, other Wi-Fi networks) use the same band.
+
+When switched to 5 GHz, the connection provides higher speed and less interference, making it suitable for activities like streaming and gaming. However, the range is shorter and the signal weakens quickly through walls.
+------------------------------------------------------------------------------------------
+8. Difference between IEEE and WFA 
+
+IEEE (Institute of Electrical and Electronics Engineers) is an organization that develops and defines technical standards for technologies, including Wi-Fi (802.11 standards). It focuses on creating the protocols and specifications.
+
+WFA (Wi-Fi Alliance) is an organization that tests, certifies, and promotes Wi-Fi products based on IEEE standards. It ensures that devices from different manufacturers work together properly.
+-------------------------------------------------------------------------------------------
+9. Types of Wi-Fi Internet Backhaul Connectivity — 5 mark answer
+
+Backhaul is the connection between the Wi-Fi network (router/AP) and the internet.
+
+Common types of backhaul:
+
+Fiber Backhaul
+Uses optical fiber cables. Provides very high speed, low latency, and high reliability. Most modern homes and campuses use fiber.
+DSL Backhaul
+Uses telephone lines. Moderate speed and affected by distance from the exchange.
+Cable Backhaul
+Uses coaxial TV cables. Higher speed than DSL but shared bandwidth.
+Wireless Backhaul
+Uses radio links between ISP tower and router. Common in rural areas.
+Cellular Backhaul (4G/5G)
+Uses mobile network. Portable but depends on signal strength and data limits.
+-----------------------------------------------------------------------------------------
+10. Wi-Fi Topologies and their Use Cases — 5 mark answer
+Infrastructure Mode
+Devices connect through an Access Point.
+Used in homes, offices, and campuses where internet access and centralized control are needed.
+Ad-hoc Mode (IBSS)
+Devices connect directly to each other without an AP.
+Used for small, temporary networks like file sharing between two laptops.
+Mesh Topology
+Multiple APs connect wirelessly and extend coverage.
+Used in large homes, campuses, and smart cities for wide area coverage.
+Bridge Mode (Point-to-Point)
+Connects two separate networks wirelessly.
+Used to link buildings or remote locations.
+Controller-Based Topology
+Multiple APs are managed by a central controller.
+Used in enterprises for better scalability, security, and management.
+------------------------------------------------------------------------------------

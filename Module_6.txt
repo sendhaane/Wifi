@@ -1,0 +1,160 @@
+1. Pillars of Wi-Fi security
+
+Wi-Fi security is built on three main pillars:
+
+Authentication
+Verifies the identity of users or devices before allowing access to the network.
+Encryption (Confidentiality)
+Protects data by converting it into an unreadable format so that unauthorized users cannot access it.
+Integrity
+Ensures that the data is not altered or tampered with during transmission.
+------------------------------------------------------------
+2. Difference between authentication and encryption in Wi-Fi security
+
+Authentication and encryption serve different purposes in securing a Wi-Fi network.
+
+Authentication
+Verifies who is trying to connect
+Ensures only authorized users/devices can access the network
+Example: entering Wi-Fi password or using 802.1X login
+Encryption
+Protects data being transmitted
+Converts data into unreadable form to prevent eavesdropping
+Example: WPA2/WPA3 encryption using keys like PTK
+-------------------------------------------------------
+3. Differences between WEP, WPA, WPA2, and WPA3
+
+These are different Wi-Fi security protocols, each improving over the previous one.
+
+WEP (Wired Equivalent Privacy)
+Oldest security standard
+Uses RC4 encryption
+Weak key management
+Easily breakable
+WPA (Wi-Fi Protected Access)
+Introduced as improvement over WEP
+Uses TKIP (Temporal Key Integrity Protocol)
+Better key handling than WEP
+Still not very secure today
+WPA2
+Uses AES encryption (CCMP)
+Strong security and widely used
+Supports both Personal (PSK) and Enterprise (802.1X) modes
+WPA3
+Latest standard
+Uses SAE (Simultaneous Authentication of Equals) instead of PSK
+Stronger protection against brute-force attacks
+Improved encryption and forward secrecy
+----------------------------------------------------
+4. Why WEP is considered insecure compared to WPA2 or WPA3
+
+WEP is considered insecure due to several design flaws:
+
+It uses RC4 encryption with short keys, making it easier to crack
+The Initialization Vector (IV) is small and gets reused, allowing attackers to analyze patterns
+Weak key management — the same key is used for all devices
+No proper mechanism to detect tampering or ensure integrity
+
+Because of these weaknesses, attackers can break WEP in a short time using simple tools.
+--------------------------------------------------
+5. Why WPA2 was introduced
+
+WPA2 was introduced to provide strong and reliable security for Wi-Fi networks, addressing the weaknesses of WEP and WPA.
+
+WEP was insecure due to weak encryption and key reuse
+WPA (with TKIP) was only a temporary solution and still had vulnerabilities
+Reasons for WPA2
+Stronger encryption
+Uses AES (CCMP) instead of RC4/TKIP, providing much better security
+Improved data integrity
+Ensures data is not modified during transmission
+Better key management
+Uses secure key exchange through the 4-way handshake
+Support for enterprise security
+Works with 802.1X authentication for large networks
+-----------------------------------------------
+6. Role of the Pairwise Master Key (PMK) in the 4-way handshake
+
+The Pairwise Master Key (PMK) is the base key used to generate secure session keys during the 4-way handshake.
+
+Role of PMK
+It is derived from:
+Wi-Fi password (in WPA2-PSK)
+Authentication server (in 802.1X)
+Both the client and the AP already have the PMK before the handshake starts
+During the 4-way handshake
+PMK is used along with:
+ANonce (from AP)
+SNonce (from client)
+MAC addresses
+These values are used to generate the PTK (Pairwise Temporal Key)
+--------------------------------------------------
+7. How the 4-way handshake ensures mutual authentication
+
+The 4-way handshake ensures that both the client and the AP verify each other without sharing the actual password.
+
+How it achieves mutual authentication
+Both the client and AP already have the PMK (derived from the same password or authentication process)
+AP proves itself
+Sends a random number (ANonce)
+Shows it is a legitimate participant in the process
+
+Client proves itself
+
+Generates SNonce and derives PTK using PMK
+Sends a MIC (Message Integrity Code)
+
+The MIC proves:
+
+The client knows the PMK (correct password)
+AP verifies client
+AP computes PTK using same inputs
+Verifies the MIC
+If valid → client is authenticated
+Client verifies AP
+AP sends encrypted GTK using PTK
+If client can decrypt it → AP is trusted
+-----------------------------------------------------
+8. What happens if a wrong passphrase is used during the 4-way handshake
+
+If a wrong passphrase is entered, the client and AP will not generate the same PMK, which leads to failure in the handshake.
+
+What happens step-by-step
+Client derives PMK from the wrong password
+AP has the correct PMK
+Both generate different PTKs
+During handshake
+Client sends MIC based on its (incorrect) PTK
+AP calculates MIC using correct PTK
+MIC mismatch occurs
+-----------------------------------------------------------
+9. What problem does 802.1X solve in a network
+
+802.1X solves the problem of unauthorized access in a network.
+
+Problem in basic Wi-Fi security
+In WPA2-PSK:
+All users share the same password
+If one user knows it, they can access the network
+Difficult to control or revoke individual access
+Solution provided by 802.1X
+Provides per-user authentication
+Uses a central authentication server (RADIUS)
+Each user has unique credentials (username/password or certificate)
+-------------------------------------------------
+10. How 802.1X enhances security over wireless networks
+
+802.1X enhances Wi-Fi security by providing strong, centralized, and per-user authentication.
+
+How it improves security
+Individual authentication
+Each user must authenticate with unique credentials instead of a shared password.
+Use of RADIUS server
+Authentication is handled by a centralized server, ensuring better control and monitoring.
+Dynamic key generation
+After successful authentication, unique session keys are generated for each user, improving encryption security.
+Prevents unauthorized access
+Only authenticated users are allowed to connect to the network.
+Better access control
+Network administrators can easily manage, allow, or revoke access for specific users.
+---------------------------------------------------

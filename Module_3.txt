@@ -1,0 +1,200 @@
+1. Different 802.11 PHY layer standards and comparison
+
+The 802.11 PHY layer defines how data is transmitted over the air. Different standards improve speed, efficiency, and capacity over time.
+
+Common PHY Standards
+802.11b → Uses DSSS, operates in 2.4 GHz, up to 11 Mbps
+802.11a → Uses OFDM, operates in 5 GHz, up to 54 Mbps
+802.11g → Uses OFDM, 2.4 GHz, up to 54 Mbps
+802.11n (Wi-Fi 4) → Uses OFDM + MIMO, 2.4/5 GHz, up to 600 Mbps
+802.11ac (Wi-Fi 5) → Uses OFDM + MU-MIMO, 5 GHz, up to 1.7 Gbps
+802.11ax (Wi-Fi 6) → Uses OFDMA + MU-MIMO, 2.4/5 GHz, up to 9.6 Gbps
+802.11be (Wi-Fi 7) → Uses OFDMA + Multi-Link, 2.4/5/6 GHz, up to 46 Gbps
+---------------------------------------------------------------------------------
+2. What are DSSS and FHSS? How do they work?
+
+DSSS (Direct Sequence Spread Spectrum) and FHSS (Frequency Hopping Spread Spectrum) are early wireless transmission techniques used to reduce interference and improve signal reliability.
+
+DSSS (Direct Sequence Spread Spectrum)
+
+In DSSS, each data bit is spread into multiple smaller bits (chips) using a spreading code.
+
+Original data is multiplied with a pseudo-random code
+This spreads the signal over a wider bandwidth
+At the receiver, the same code is used to recover the original data
+
+FHSS (Frequency Hopping Spread Spectrum)
+
+In FHSS, the signal jumps between different frequencies in a predefined sequence.
+
+Transmitter and receiver agree on a hopping pattern
+Data is transmitted on one frequency for a short time
+Then it hops to another frequency
+--------------------------------------------------------------------------------
+3. How modulation schemes work in PHY layer and comparison
+
+Modulation is the process of converting digital data (bits) into signals that can be transmitted over the air by changing properties of a carrier wave (amplitude, phase, or frequency).
+Common Modulation Schemes in Wi-Fi
+BPSK (Binary Phase Shift Keying)
+1 bit per symbol
+Very robust, low speed
+QPSK (Quadrature Phase Shift Keying)
+2 bits per symbol
+Better speed than BPSK
+16-QAM (Quadrature Amplitude Modulation)
+4 bits per symbol
+Higher speed, moderate reliability
+64-QAM
+6 bits per symbol
+Used in 802.11a/g/n
+256-QAM
+8 bits per symbol
+Used in 802.11ac
+1024-QAM
+10 bits per symbol
+Used in 802.11ax
+4096-QAM
+12 bits per symbol
+Used in 802.11be
+------------------------------------------------------------------------------
+4. Significance of OFDM in WLAN and how it improves performance
+
+OFDM (Orthogonal Frequency Division Multiplexing) is a key technology used in modern Wi-Fi standards to improve data transmission efficiency and reliability.
+
+What OFDM does
+
+Instead of sending data over a single carrier, OFDM:
+
+Splits the channel into multiple subcarriers
+Sends parts of data in parallel across these subcarriers
+How it improves performance
+High Data Rates
+Parallel transmission over many subcarriers increases overall speed.
+Resistance to Interference
+If some subcarriers are affected by noise, others still carry data.
+Handles Multipath Effect
+Reflections of signals (common in indoor environments) are better managed.
+Efficient Spectrum Usage
+Subcarriers are closely spaced but do not interfere due to orthogonality.
+-------------------------------------------------------------------------------
+5. How frequency bands are divided for Wi-Fi and their channels
+
+Wi-Fi operates mainly in three frequency bands: 2.4 GHz, 5 GHz, and 6 GHz. Each band is divided into smaller units called channels.
+
+2.4 GHz Band
+Range: 2.4 – 2.5 GHz
+Total channels: ~14 (varies by country)
+Only 3 non-overlapping channels: 1, 6, 11
+Narrow channel width (20/40 MHz)
+5 GHz Band
+Range: 5.0 – 5.9 GHz
+Many more channels than 2.4 GHz
+Supports wider channels: 20, 40, 80, 160 MHz
+6 GHz Band (Wi-Fi 6E / Wi-Fi 7)
+Range: 5.925 – 7.125 GHz
+Large number of channels
+Supports very wide channels (up to 320 MHz)
+---------------------------------------------------------------------------------
+6. Role of Guard Intervals in WLAN and effect of Short Guard Interval
+
+Guard Interval (GI) is a small time gap inserted between transmitted symbols in Wi-Fi.
+In wireless communication, signals reflect off walls and objects, causing multipath propagation.
+These delayed signals can overlap with the next symbol and cause errors.
+
+The Guard Interval prevents this by:
+
+Adding a gap between symbols
+Allowing delayed signals to settle before the next symbol arrives
+-------------------------------------------------------------------------------
+7. Structure of an 802.11 PHY layer frame and its key components
+
+In Wi-Fi, the PHY layer frame is called a PPDU (Physical Protocol Data Unit). It is the actual signal transmitted over the air.
+
+Basic Structure of PPDU
+
+A PPDU consists of three main parts:
+
+Preamble
+Used for synchronization between transmitter and receiver
+Helps the receiver detect the signal and prepare for decoding
+Includes STF (Short Training Field) and LTF (Long Training Field)
+Header (PHY Header / SIGNAL field)
+Contains information about the transmission
+Includes:
+Data rate
+Modulation type
+Length of the frame
+Data (PSDU)
+Actual payload from MAC layer
+Contains user data (MPDU)
+-----------------------------------------------------------------------
+8. Difference between OFDM and OFDMA
+
+OFDM (Orthogonal Frequency Division Multiplexing) and OFDMA (Orthogonal Frequency Division Multiple Access) are related technologies used in Wi-Fi, but they differ in how the channel is shared.
+
+OFDM
+The channel is divided into multiple subcarriers
+All subcarriers are used by one user at a time
+Used in older Wi-Fi standards (802.11a/g/n/ac)
+
+Single user occupies the entire channel
+
+OFDMA
+The channel is divided into smaller groups of subcarriers called Resource Units (RUs)
+Multiple users can transmit simultaneously, each using different RUs
+Introduced in 802.11ax (Wi-Fi 6)
+
+Multiple users share the channel at the same time
+---------------------------------------------------------------------------------------------
+9. Difference between MIMO and MU-MIMO
+
+MIMO (Multiple Input Multiple Output) and MU-MIMO (Multi-User MIMO) are technologies used to improve Wi-Fi performance using multiple antennas.
+
+MIMO
+Uses multiple antennas at transmitter and receiver
+Sends multiple data streams to a single device
+Increases data rate for that device
+
+One device gets multiple streams
+
+MU-MIMO
+Allows AP to communicate with multiple devices at the same time
+Each device receives its own data stream
+
+Multiple devices are served simultaneously
+
+---------------------------------------------------------------------------------------------------
+10. What are PPDU, PLCP, and PMD in the PHY layer
+
+These are components of the Physical (PHY) layer in Wi-Fi that handle how data is prepared and transmitted over the air.
+
+PPDU (Physical Protocol Data Unit)
+The actual frame transmitted over the air
+Contains:
+Preamble
+Header
+Data (PSDU)
+
+Role:
+Final wireless signal format
+
+PLCP (Physical Layer Convergence Protocol)
+Acts as a bridge between MAC layer and PHY layer
+Takes MAC data (MPDU/PSDU) and converts it into PPDU
+Adds:
+Preamble
+PHY header
+
+Role:
+Prepares data for transmission
+
+PMD (Physical Medium Dependent)
+Responsible for actual signal transmission and reception
+Handles:
+Modulation
+OFDM processing
+RF transmission (radio signals)
+
+Role:
+Converts data into radio waves and sends it through the air
+---------------------------------------------------------------------------------------------------
