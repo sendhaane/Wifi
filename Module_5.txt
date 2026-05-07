@@ -1,0 +1,172 @@
+1. Key features of Wi-Fi 6, 6E, and 7 and how they differ from Wi-Fi 5
+
+Wi-Fi 5 (802.11ac) focused mainly on higher speeds using wider channels (up to 160 MHz) and MU-MIMO (downlink only).
+
+Wi-Fi 6 (802.11ax) – Improvements over Wi-Fi 5
+Works in 2.4 GHz and 5 GHz
+Introduces OFDMA (multiple users transmit simultaneously)
+Supports uplink and downlink MU-MIMO
+Uses 1024-QAM for higher data rates
+Includes Target Wake Time (TWT) for power saving
+Better performance in dense environments
+
+Wi-Fi 6E – Extension of Wi-Fi 6
+Adds 6 GHz band (in addition to 2.4 and 5 GHz)
+Provides more channels and less interference
+Supports wider channels (up to 160 MHz)
+Lower congestion compared to older bands
+
+Wi-Fi 7 (802.11be) – Next generation
+Works in 2.4 GHz, 5 GHz, and 6 GHz
+Supports 320 MHz channel width
+Uses 4096-QAM (higher data rate)
+Introduces Multi-Link Operation (MLO)
+Improved OFDMA and MU-MIMO
+Much higher throughput (up to ~46 Gbps)
+----------------------------------------------------------------------------------------------
+2. Role of OFDMA in Wi-Fi 6 and how it improves efficiency
+
+OFDMA (Orthogonal Frequency Division Multiple Access) is a key feature of Wi-Fi 6 that improves how multiple devices share the channel.
+
+Role of OFDMA
+Splits a Wi-Fi channel into smaller units called Resource Units (RUs)
+Assigns different RUs to different devices
+Allows multiple devices to transmit simultaneously
+How it improves efficiency
+Reduces waiting time
+Multiple devices can send data at the same time instead of taking turns
+Better for small data packets
+Efficiently handles traffic like IoT, notifications, and small uploads
+Improves performance in dense networks
+Works well in crowded environments like offices and campuses
+Lower latency
+Faster access to the channel reduces delays
+-----------------------------------------------------------------------------------------
+3. Benefits of Target Wake Time (TWT) in Wi-Fi 6 for IoT devices
+
+Target Wake Time (TWT) is a power-saving feature in Wi-Fi 6 where the AP schedules when a device should wake up to transmit or receive data.
+
+Benefits
+Improved battery life
+Devices sleep for longer periods and wake only at scheduled times, reducing power consumption.
+Reduced network contention
+Since devices wake at different times, fewer devices compete for the channel simultaneously.
+Efficient communication for IoT
+Ideal for sensors and smart devices that send small, periodic data.
+Predictable communication
+Scheduled wake times ensure consistent and reliable data transmission.
+--------------------------------------------------------------------------------------
+4. Significance of the 6 GHz frequency band in Wi-Fi 6E
+
+The 6 GHz band is an extension introduced in Wi-Fi 6E to overcome congestion in older Wi-Fi bands.
+
+Significance
+More available spectrum
+The 6 GHz band provides a large number of new channels, reducing congestion.
+Less interference
+Unlike 2.4 GHz and 5 GHz, the 6 GHz band is relatively unused, leading to cleaner signals.
+Wider channels
+Supports wider channels (up to 160 MHz), enabling higher data rates.
+Better performance in dense environments
+Ideal for places with many devices like offices and campuses.
+Supports modern devices only
+Since only newer devices use this band, there is less legacy interference.
+------------------------------------------------------------
+5. Comparison between Wi-Fi 6 and Wi-Fi 6E (range, bandwidth, interference)
+
+Wi-Fi 6 operates in 2.4 GHz and 5 GHz, while Wi-Fi 6E extends Wi-Fi 6 by adding the 6 GHz band.
+
+Range
+Wi-Fi 6 (2.4 GHz / 5 GHz) → Better range, especially in 2.4 GHz
+Wi-Fi 6E (6 GHz) → Shorter range due to higher frequency
+Bandwidth
+Wi-Fi 6 → Limited by crowded 2.4 and 5 GHz bands
+Wi-Fi 6E → Much higher available bandwidth due to new 6 GHz spectrum
+Interference
+Wi-Fi 6 → More interference from legacy devices
+Wi-Fi 6E → Very low interference since only newer devices use 6 GHz
+-----------------------------------------------------------
+6. Major innovations introduced in Wi-Fi 7 (802.11be)
+
+Wi-Fi 7 introduces several advancements to achieve very high speed, low latency, and improved efficiency.
+
+Key Innovations
+320 MHz Channel Width
+Doubles the channel width compared to Wi-Fi 6, enabling much higher data rates.
+4096-QAM Modulation
+Increases the number of bits per symbol, improving throughput.
+Multi-Link Operation (MLO)
+Allows devices to use multiple frequency bands simultaneously for better performance.
+Enhanced OFDMA
+Improves resource allocation and reduces latency.
+Multi-RU Allocation
+A single user can use multiple resource units, increasing efficiency.
+Higher MIMO Capability
+Supports more spatial streams, improving capacity and speed.
+-----------------------------------------------------
+7. Multi-Link Operation (MLO) and its impact on throughput and latency
+
+Multi-Link Operation (MLO) is a feature in Wi-Fi 7 that allows a device to use multiple frequency bands or channels simultaneously.
+Concept
+
+A device can connect over:
+2.4 GHz
+5 GHz
+6 GHz
+Data can be transmitted across multiple links at the same time
+Impact on Throughput
+Combines bandwidth from multiple links
+Results in much higher data rates
+Improves overall network capacity
+------------------------------------------------------
+8. Purpose of 802.11k and 802.11v and how they aid in roaming
+
+802.11k and 802.11v are standards that help improve roaming decisions in Wi-Fi networks.
+
+802.11k (Radio Resource Management)
+Provides information about nearby APs
+The current AP shares a neighbor report with the client
+Helps the client quickly identify better APs
+
+Benefit:
+Reduces scanning time and speeds up roaming
+
+802.11v (Network Management)
+Allows the network to guide the client to a better AP
+Uses BSS Transition Management messages
+Helps in load balancing and better AP selection
+
+Benefit:
+Improves decision-making for roaming
+-------------------------------------------------------
+9. Fast BSS Transition (802.11r) and its benefit in mobile environments
+
+802.11r (Fast BSS Transition) is a standard that enables fast and seamless roaming between Access Points.
+
+Concept
+
+Normally, when a device moves to a new AP:
+
+It must perform full authentication again
+This causes delay
+
+With 802.11r:
+
+Authentication keys are pre-shared or derived in advance
+Device can quickly switch to a new AP
+----------------------------------------------------
+10. How 802.11k, 802.11v, and 802.11r work together for seamless roaming
+
+These three standards work together to provide fast and efficient roaming in enterprise Wi-Fi networks.
+
+Roles of Each Standard
+802.11k
+Provides a list of nearby APs (neighbor report)
+→ Helps the client know where to roam
+802.11v
+Suggests the best AP to connect to
+→ Guides the client’s decision
+802.11r
+Enables fast authentication during roaming
+→ Reduces handoff delay
+---------------------------------------------------------
